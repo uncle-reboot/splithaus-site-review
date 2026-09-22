@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>SplitHaus — Website strategy &amp; specific changes</title><style>
+:root{color-scheme:light;--ink:#182f35;--muted:#53656a;--line:#dce3df;--accent:#226658;--paper:#fffefb;--wash:#f2f5f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--wash);color:var(--ink);font:17px/1.75 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent);text-underline-offset:4px;overflow-wrap:anywhere}a:hover{color:#123b32}a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #ac7230;outline-offset:4px}
+.topbar{background:var(--ink);color:#fff;padding:18px 5vw;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:750;font-size:21px;letter-spacing:-.5px}.topbar small{color:#d0e1da;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}.layout{max-width:1360px;margin:auto;display:grid;grid-template-columns:255px minmax(0,1fr);gap:48px;padding:48px 36px 90px}aside{position:sticky;top:30px;align-self:start}aside .label{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;font-weight:750;color:var(--muted);margin:0 12px 12px}nav{display:grid;gap:5px}nav a{padding:9px 12px;border-radius:7px;text-decoration:none;font-size:14px;line-height:1.5}nav a:hover{background:#e3ebe5}.aside-note{font-size:12px;color:var(--muted);padding:16px 12px;border-top:1px solid var(--line);margin-top:20px}
+main{min-width:0;background:var(--paper);padding:45px 52px;border:1px solid var(--line);border-radius:12px;box-shadow:0 5px 26px #18352b06}h1,h2,h3{line-height:1.2;letter-spacing:-.025em;text-wrap:balance}h1{font-size:clamp(30px,4vw,46px);margin:0 0 24px;font-weight:760;max-width:720px}h2{font-size:28px;margin:0 0 24px}h3{font-size:21px;margin:32px 0 16px}section+section{border-top:1px solid var(--line);margin-top:44px;padding-top:40px}p{margin:0 0 18px}li{margin:9px 0;padding-left:3px}ul,ol{padding-left:25px}strong{font-weight:690}blockquote{margin:12px 0 23px;padding:17px 21px;background:#edf4ee;border-left:3px solid var(--accent);border-radius:0 7px 7px 0;color:#21453b}blockquote p:last-child{margin-bottom:0}code{font: .86em/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef1ee;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6}th{text-align:left;background:#edf2ee;font-size:12px}th,td{padding:13px;border:1px solid var(--line);vertical-align:top}td:first-child{min-width:180px}.table-scroll{overflow:auto;margin:22px 0}button{font:inherit;font-size:13px;border:1px solid #b7ccc2;background:transparent;color:white;padding:8px 14px;border-radius:6px;cursor:pointer}.skip{position:absolute;left:10px;top:-100px;background:white;padding:10px;z-index:3}.skip:focus{top:10px}.footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:35px;padding-top:18px}
+@media(max-width:960px){.layout{grid-template-columns:200px minmax(0,1fr);gap:22px;padding:30px 20px}main{padding:30px}body{font-size:16px}}
+@media(max-width:720px){.layout{display:block;padding:22px 12px 50px}aside{position:static;margin-bottom:22px}nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}nav a{background:#e8eee8;font-size:12px;padding:10px;min-height:44px}.aside-note{display:none}main{padding:27px 20px;border-radius:8px}h2{font-size:25px}h3{font-size:20px}blockquote{padding:14px 16px}.topbar{padding:16px 22px}.topbar small{display:none}section+section{margin-top:32px;padding-top:30px}}
+@media print{body{background:white;font-size:10pt;color:#111}.topbar,aside,.skip{display:none}.layout{display:block;max-width:none;padding:0}main{padding:0;border:0;box-shadow:none}h1{font-size:27pt}h2{font-size:19pt}h3{font-size:14pt}h1,h2,h3{break-after:avoid}blockquote,tr{break-inside:avoid}a{color:inherit}section+section{margin-top:25px;padding-top:24px}.table-scroll{overflow:visible}table{font-size:8pt}th,td{padding:7px}td:first-child{min-width:0}@page{margin:18mm}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body><a class="skip" href="#report">Skip to report</a><header class="topbar"><div><span class="brand">SplitHaus</span> <small> / Founder reading edition</small></div><button type="button" onclick="window.print()">Print / Save PDF</button></header><div class="layout"><aside aria-label="Report navigation"><p class="label">In this document</p><nav><a href="#1-strategy-help-the-organizer-earn-family-agreement">1. Strategy: help the organizer earn family agreement</a><a href="#2-therefore-the-specific-changes-why-they-matter-and-exact-copy">2. Therefore: the specific changes, why they matter and exact copy</a><a href="#3-page-order-before-and-after">3. Page order: before and after</a><a href="#4-founder-decisions-and-what-they-block">4. Founder decisions and what they block</a><a href="#5-measurement-spec-posthog-public-decision-funnel">5. Measurement spec: PostHog public-decision funnel</a><a href="#6-verification-backlog">6. Verification backlog</a><a href="#7-evidence-disagreement-and-reconciliation-notes">7. Evidence, disagreement and reconciliation notes</a></nav><p class="aside-note">Evidence dated September 21, 2026.<br>Recommendations only.<br>No deployment authorized.</p></aside><main id="report"><section><h1>SplitHaus: website strategy and specific changes</h1>
+<p><strong>Evidence date: September 21, 2026 · Strategy-first reading edition</strong><br />
+<strong>Recommendation artifact only. No deployment or external action authorized.</strong></p>
+</section><section><h2 id="1-strategy-help-the-organizer-earn-family-agreement">1. Strategy: help the organizer earn family agreement</h2>
+<p><strong>SplitHaus should sell a considered family trial, not an immediate account signup.</strong> Build the website so the person organizing the calendar can send one link, and a skeptical relative can understand the proposal, check what it means for their August weeks, assess cost and effort, and decide whether it is worth discussing.</p>
+<p>The business objective remains adoption of a working shared-house schedule. The website’s immediate job is to help the family make the decision that precedes adoption. <strong>Do not confuse the person willing to set up software with everyone whose agreement is needed to use it.</strong> This is the working buyer model in the source material—not a measured conversion finding. [B]</p>
+<h3 id="the-problem-we-are-solving">The problem we are solving</h3>
+<p>Today, the captured homepage asks for setup before resolving the family’s questions. The primary CTA opens a flow with rotation and placeholder groups already selected. <code>/how</code> and <code>/pricing</code> redirect to login. A relative receiving the link is therefore being asked to do something before being helped to evaluate it. [C]</p>
+<p>For this reader, the competing option is to keep using the existing texts, calls, paper list or shared calendar—not necessarily to buy another software product. A familiar imperfect arrangement can feel less risky than a new system that might change August allocations or create work for everyone. That is the strategic hypothesis this redesign addresses; it is not proof that scheduling dominates every family’s problems.</p>
+<h3 id="make-these-five-strategic-choices">Make these five strategic choices</h3>
+<p><strong>1. Sell scheduling, not a broader family-management system.</strong></p>
+<p>Lead with one concrete job: put the family’s chosen scheduling approach into a calendar everyone can see and follow. Keep shared costs secondary. <strong>Therefore:</strong> use a functional headline, a simple schedule example and capability-based copy; remove expense selling from the hero. Adding a second financial decision before the scheduling decision makes the proposal harder to explain and conflicts with the recorded category boundary.</p>
+<p><strong>2. Make evaluation safe before asking for commitment.</strong></p>
+<p>A skeptical relative should be able to read, inspect an example and review terms without registering or appearing to accept a new allocation policy. <strong>Therefore:</strong> make <code>/how</code>, <code>/pricing</code> and <code>/share</code> public; lead with “See how it works” and “Read the family summary”; acknowledge August without promising unchanged weeks. Reading about the product must not feel like starting the product.</p>
+<p><strong>3. Give the organizer a proposal the family can judge—not a sales pitch they must reconstruct.</strong></p>
+<p>The forwarded page should answer what this is, how it could handle the arrangements the family wants to keep, what it costs and what each person must do. <strong>Therefore:</strong> build a self-contained family summary with a verified example, cost and participation answers, then offer sharing. A page of questions with no answers is not enough; a share button alone does not solve the organizer’s problem.</p>
+<p><strong>4. Explain the mechanism before asking the reader to operate it.</strong></p>
+<p>An interactive calendar asks the visitor to learn controls before they know whether the idea fits. <strong>Therefore:</strong> show a short fictional schedule in readable text, explain how a supported approach produced it, and make interaction optional. Keep the founder’s first-person story as evidence of relevant experience—not as evidence that the product guarantees fairness or reliability.</p>
+<p><strong>5. Keep setup easy to find, but earn it.</strong></p>
+<p>A ready organizer should still be able to proceed. <strong>Therefore:</strong> keep a quieter setup route in navigation, place the main setup CTA after explanation, and ask how the group shares time rather than preselecting rotation. The decision journey and the product entry must tell the same story: the family evaluates and chooses an approach.</p>
+<h3 id="the-intended-journey-and-the-job-of-each-page">The intended journey and the job of each page</h3>
+<ul>
+<li><strong>Homepage — understand and check relevance.</strong> What is this? What might it mean for our usual weeks? Show purpose, the August prompt, a simple example, and accessible cost/effort information.</li>
+<li><strong><code>/how</code> — check whether the approach fits.</strong> Explain supported scheduling modes, how assignments happen, Match’s actual role and limitations. Do not promise universal compatibility.</li>
+<li><strong><code>/pricing</code> — establish the obligation.</strong> One verified offer, billing unit and clear answers about trial, renewal, cancellation and multiple houses. Distinguish what the subscription costs from how the family divides that cost.</li>
+<li><strong><code>/share</code> — support a family conversation.</strong> A complete, readable summary that stands on its own when forwarded. Let the reader review it before invoking sharing.</li>
+<li><strong>Setup — act after choosing to proceed.</strong> Ask how the group shares time; remove placeholder groups and automatic rotation assumptions.</li>
+</ul>
+<p>These are jobs, not mandatory steps every visitor must complete. Let readers go directly to the answer they need.</p>
+<h3 id="what-to-do-first-and-what-not-to-do">What to do first—and what not to do</h3>
+<p><strong>First, settle the answers:</strong> record the authoritative offer, verify scheduling/participation explanations and assign public-route ownership. Page layouts can progress in parallel, but a pricing link without an accurate price and a participation heading without an answer are unfinished work.</p>
+<p><strong>Then, build the decision path:</strong> implement the public pages, hero/action hierarchy, fictional proof and forwardable summary as one coherent experience. Keep copy, offer terms and setup entry consistent. Do not spend the first iteration adding another interactive demo, promoting the expense add-on, creating regional variants or adding a sticky share bar.</p>
+<p><strong>Before publishing, test the promises:</strong> verify public access, product behavior, mobile controls, consent and assets. Resolve the analytics-identity policy before finalizing instrumentation. These are dependencies for a credible experience, not permission to deploy.</p>
+<h3 id="how-we-will-judge-whether-the-strategy-works">How we will judge whether the strategy works</h3>
+<p>The immediate test is whether a consented reader can accurately explain <strong>what SplitHaus does, what happens to existing arrangements, what it costs, what they personally must do and what the next step is</strong>. The desired response is a considered “this is worth discussing,” not a mistaken belief that August weeks are guaranteed.</p>
+<p>Use PostHog to distinguish evaluation, summary use, technical sharing outcomes and later setup/real scheduling activity. A share click is not delivery, agreement or adoption. More setup clicks alone are not success; fewer premature clicks with better understanding may be progress. There is no supported conversion target or uplift forecast yet.</p>
+<p><strong>Evidence strength:</strong> Astra and Terra corroborate the direction using the same source packet; this is not independent customer validation. Forty seconds is a design scenario, not measured dwell time. Section 7 preserves the source disagreements and limitations.</p>
+<h3 id="existing-strengths-to-preserve">Existing strengths to preserve</h3>
+<p>Retain zoom to 5×, notch/keyboard-aware viewport settings, mobile-first authoring, mobile content parity, calendar ARIA labels, Dan’s first-person provenance and the billing FAQ questions. Keep “How homes stay shared.” as a brand line elsewhere, not a second hero headline. Price already appears below the current hero action; it is the fuller pricing section that sits after five objection questions. The redesign makes the answer clearer and consistent—it does not fix an absence of any price cue.</p>
+</section><section><h2 id="2-therefore-the-specific-changes-why-they-matter-and-exact-copy">2. Therefore: the specific changes, why they matter and exact copy</h2>
+<p>The changes below implement the strategy above. Each starts with the decision it serves and why the current experience gets in the way, followed by the concrete change and exact copy. Rank order and quoted replacement copy remain grounded in the primary review. <strong>Blockquotes are proposed customer-facing copy; conditions outside them are not.</strong> Owners and S/M effort labels are proposals, not assignments or time estimates.</p>
+<h3 id="1-make-evaluation-public-before-setup">1. Make evaluation public before setup</h3>
+<p><strong>Strategic reason:</strong> Let relatives evaluate without committing.</p>
+<p><strong>Why this matters:</strong> A login wall turns a request to understand the proposal into an account-creation task. That interrupts the organizer’s attempt to get a considered family response.</p>
+<p><strong>Specific change:</strong> Make <code>/how</code>, <code>/pricing</code> and <code>/share</code> public. Separate reading the family summary from opening a share sheet; do not send evaluation CTAs into setup.</p>
+<p><strong>Current:</strong> Hero primary action starts setup with rotation and placeholder groups; /how and /pricing redirect to login; no public board-share artifact is offered in the capture.</p>
+<p><strong>Primary action</strong></p>
+<blockquote>
+<p>See how it works</p>
+</blockquote>
+<p><strong>Secondary action</strong></p>
+<blockquote>
+<p>Read the family summary</p>
+</blockquote>
+<p><strong>Conditional reassurance</strong></p>
+<blockquote>
+<p>No account needed to read this overview, see the example or review pricing.</p>
+</blockquote>
+<p><strong>Destination rule:</strong> <code>/how</code>, <code>/pricing</code> and proposed <code>/share</code> must be genuinely public. Use the existing <code>#how-sharing</code> as the interim explanation path and a verified homepage pricing anchor until dedicated pages exist. Do not invent an anchor ID. The access reassurance above is conditional on every named destination working logged out; it does not describe access to a private calendar. “Read” opens the summary; it must not invoke a share sheet. Verify public HTTP content and the actual CTA journey. A reachable pricing section with disputed claims is not a reconciled offer.</p>
+<p><strong>Proposed owner:</strong> Matt · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If a destination fails public-access checks, remove the access reassurance and route the relevant action to a verified public explanation or pricing anchor; do not restore onboarding as the evaluation action.</p>
+<p><em>Source: A, <code>homepage-how-pricing-share</code>.</em></p>
+<h3 id="2-use-one-functional-hero-and-one-august-prompt">2. Use one functional hero and one August prompt</h3>
+<p><strong>Strategic reason:</strong> Make the category and the personal stakes obvious.</p>
+<p><strong>Why this matters:</strong> “How homes stay shared” is a brand idea, but a cold reader needs to know that this is scheduling software. The August question acknowledges the risk they are evaluating without promising to preserve their preferred weeks.</p>
+<p><strong>Specific change:</strong> Use one functional H1 and one short August compatibility prompt. Keep the original brand line elsewhere and avoid stacking reassurance paragraphs in the opening.</p>
+<p><strong>Current:</strong> H1 is 'How homes stay shared.' The subhead leads with a fair calendar and clear expenses. August is not acknowledged.</p>
+<p><strong>Eyebrow</strong></p>
+<blockquote>
+<p>For shared vacation homes</p>
+</blockquote>
+<p><strong>Headline</strong></p>
+<blockquote>
+<p>A shared calendar for your family’s house.</p>
+</blockquote>
+<p><strong>Subhead</strong></p>
+<blockquote>
+<p>SplitHaus turns the way your family agrees to share the house into a schedule everyone can see and follow.</p>
+</blockquote>
+<p><strong>Primary action</strong></p>
+<blockquote>
+<p>See how it works</p>
+</blockquote>
+<p><strong>Secondary action</strong></p>
+<blockquote>
+<p>Read the family summary</p>
+</blockquote>
+<p><strong>August heading</strong></p>
+<blockquote>
+<p>What about our usual August week?</p>
+</blockquote>
+<p><strong>August body</strong></p>
+<blockquote>
+<p>Start by checking how SplitHaus would handle the arrangements your family wants to keep.</p>
+</blockquote>
+<p><strong>Placement:</strong> put the August prompt immediately after the hero, once only. Place the canonical offer line beside the actions in reading order, followed by “Read pricing and billing details.” Until reconciliation, only the non-numeric navigation fallback is selected. Keep the brand line elsewhere. Do not shrink text or restrict zoom to force everything onto one screen. This compatibility question still needs a demonstrated product answer; it does not promise that existing August arrangements are supported or unchanged.</p>
+<p><strong>Proposed owner:</strong> Co-founder for copy; Matt for presentation · <strong>Effort:</strong> S</p>
+<p><strong>If verification fails:</strong> If testing reveals an implied preservation promise, retain the functional hero and revise the prompt with Trust and Copy; do not substitute an unchanged-week assurance.</p>
+<p><em>Source: A, <code>homepage-hero</code>.</em></p>
+<h3 id="3-publish-one-reconciled-offer-not-competing-variants">3. Publish one reconciled offer—not competing variants</h3>
+<p><strong>Strategic reason:</strong> Make the proposed financial obligation repeatable and credible.</p>
+<p><strong>Why this matters:</strong> A relative cannot assess a proposal when the live offer and governing record disagree. “Whole group” can also obscure per-house billing; the family’s internal cost split is a separate question.</p>
+<p><strong>Specific change:</strong> Reconcile trial, price, billing unit and inclusions once, then reuse that offer everywhere. Keep interim navigation non-numeric, but treat the missing definitive cost answer as unfinished work.</p>
+<p><strong>Current:</strong> The hero displays a price note; detailed pricing is late. Captured one-year/$119 terms conflict with the unreconciled governing record, and production billing behavior is unverified.</p>
+<p><strong>Heading</strong></p>
+<blockquote>
+<p>Scheduling for your shared house</p>
+</blockquote>
+<p><strong>Ledger safe interim</strong></p>
+<blockquote>
+<p>Read pricing and billing details.</p>
+</blockquote>
+<p><strong>Billing discussion heading</strong></p>
+<blockquote>
+<p>Who would handle payment?</p>
+</blockquote>
+<p><strong>Billing discussion copy</strong></p>
+<blockquote>
+<p>Agree together who would handle the subscription and how you would share the cost.</p>
+</blockquote>
+<p><strong>Internal reconciliation only—not public copy:</strong> the historical ledger says “The public offer displays 180 free days before the listed annual price.” The as-displayed variant is “Free for 1 year, then $119 per house, per year.” Neither is selected as current terms until founder reconciliation and production verification. The expired ledger review does not resolve the conflict. Also withhold “No card to start,” “Everyone included,” and “No per-person fees” until supported: number-free wording is not automatically verified.</p>
+<p>Use one source across homepage, <code>/pricing</code>, <code>/share</code>, onboarding and billing surfaces. Resolve per-house/multi-house treatment and distinguish the subscription billing unit from how relatives divide payment. The neutral link is an incomplete cost answer, not the final desired experience. Do not invent monthly/per-person economics.</p>
+<p><strong>Proposed owner:</strong> Matt and co-founder, with Billing and Trust · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If offer evidence conflicts, withdraw the affected commercial statement and retain neutral access to the verified information available. Do not silently substitute either trial duration or invent effective monthly/per-person pricing.</p>
+<p><em>Source: A, <code>scheduling-offer-copy</code>.</em></p>
+<h3 id="4-let-her-read-the-family-summary-before-sharing-it">4. Let her read the family summary before sharing it</h3>
+<p><strong>Strategic reason:</strong> Equip the organizer with a self-contained family proposal.</p>
+<p><strong>Why this matters:</strong> The recipient should not have to reconstruct the product from several links or forward material they have not read. A summary that states only questions transfers the explanation burden back to the organizer.</p>
+<p><strong>Specific change:</strong> Build <code>/share</code> with a verified example, cost and participation answers. Lead with reading; put “Share this summary” and copy-link controls on the summary itself.</p>
+<p><strong>Current:</strong> No public board-share artifact is offered in the capture. Message-preview content and rendering are not currently measured.</p>
+<p><strong>Headline</strong></p>
+<blockquote>
+<p>Could this work for our family’s house?</p>
+</blockquote>
+<p><strong>Opening</strong></p>
+<blockquote>
+<p>SplitHaus turns the way your family agrees to share the house into a schedule everyone can see and follow.</p>
+</blockquote>
+<p><strong>Summary section</strong></p>
+<blockquote>
+<p>What about our usual August week?</p>
+</blockquote>
+<blockquote>
+<p>Check how the scheduling approach would handle the arrangements we want to keep.</p>
+</blockquote>
+<p><strong>Summary section</strong></p>
+<blockquote>
+<p>See an example</p>
+</blockquote>
+<p><strong>Required content, not yet supplied copy:</strong> Include the product-verified fictional example directly on this page.</p>
+<p><strong>Summary section</strong></p>
+<blockquote>
+<p>What would it cost?</p>
+</blockquote>
+<p><strong>Required content, not yet supplied copy:</strong> Include the same reconciled offer as the homepage, with public billing access and a real terms-as-of date.</p>
+<p><strong>Summary section</strong></p>
+<blockquote>
+<p>What would each person need to do?</p>
+</blockquote>
+<p><strong>Required content, not yet supplied copy:</strong> Include a verified participation explanation. Its answer is currently missing and must not be invented.</p>
+<p><strong>Send action</strong></p>
+<blockquote>
+<p>Share this summary</p>
+</blockquote>
+<p><strong>Fallback action</strong></p>
+<blockquote>
+<p>Copy link</p>
+</blockquote>
+<p><strong>Copy success</strong></p>
+<blockquote>
+<p>Link copied. Add your own note before sending.</p>
+</blockquote>
+<p><strong>Copy failure</strong></p>
+<blockquote>
+<p>Couldn’t copy the link. You can copy it from your browser’s address bar.</p>
+</blockquote>
+<p><strong>Suggested editable message</strong></p>
+<blockquote>
+<p>This looks worth discussing—let’s check how it would handle our August weeks and what it costs.</p>
+</blockquote>
+<p><strong>Proposed message preview—not verified rendering</strong></p>
+<blockquote>
+<p>SplitHaus | A calendar for the family house</p>
+</blockquote>
+<blockquote>
+<p>Explore the scheduling idea and what to discuss before trying it.</p>
+</blockquote>
+<p>Use <code>https://www.splithaus.com/share</code> only after it is public. Use a restrained brand image, not the reunion photograph or commercial terms; apply the same discipline to homepage metadata. The editable message is optional—not an endorsement inserted without the sender’s choice. No contacts request, automatic sending, edited-message collection, household tokens or forwarder identity in URLs.</p>
+<p>Provide the explanation directly on the page, with a secondary print view generated from the same content. A PDF, if later added, must use that source and real terms-as-of date; remove stale derivatives. A question-only page is incomplete: cost and participation answers must be verified, not fabricated. Native-share/clipboard success does not prove delivery or agreement.</p>
+<p><strong>Proposed owner:</strong> Matt; co-founder supplies verified content · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If native sharing fails, retain copy-link fallback. If a preview claim becomes unsupported, remove it and request preview refresh where possible; do not assume already distributed previews can be recalled.</p>
+<p><em>Source: A, <code>proposed-public-share</code>.</em></p>
+<h3 id="5-replace-the-default-booking-task-with-live-text-proof">5. Replace the default booking task with live-text proof</h3>
+<p><strong>Strategic reason:</strong> Explain the scheduling mechanism before teaching interface controls.</p>
+<p><strong>Why this matters:</strong> An early booking grid asks the reader to perform a task before they have decided whether the approach fits. A static example can explain the result, but without allocation logic it risks implying everyone receives equal weeks.</p>
+<p><strong>Specific change:</strong> Show live-text fictional rows, name the supported approach and explain how it produced the assignments. Defer interaction to an optional sample-calendar action.</p>
+<p><strong>Current:</strong> The demo invites 'Try it: book your week' across 30 interactive day cells. Touch usability is not currently measured.</p>
+<p><strong>Heading</strong></p>
+<blockquote>
+<p>See an example schedule</p>
+</blockquote>
+<p><strong>Disclosure</strong></p>
+<blockquote>
+<p>Fictional groups and dates—not a recommendation for dividing your family’s time.</p>
+</blockquote>
+<p><strong>Optional action</strong></p>
+<blockquote>
+<p>Explore the sample calendar</p>
+</blockquote>
+<p><strong>Illustrative rows—verify against a named supported approach before publication:</strong></p>
+<blockquote>
+<p>August 1–7 · Group A
+August 8–14 · Group B
+August 15–21 · Group C</p>
+</blockquote>
+<p>Check the example against a named supported approach and add a verified explanation of how its assignments were determined. These illustrative rows alone do not prove compatibility with existing August arrangements. Avoid “You” as a sample group, “Anyone can book it,” and any suggestion that equal-length rows establish fairness or preserve August weeks. Whether readers infer equal allocation is not currently measured. Retain descriptive ARIA labels in the optional interactive calendar.</p>
+<p><strong>Proposed owner:</strong> Matt and co-founder · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If the example misrepresents supported behavior, remove or revise it while retaining the public explanation. Do not restore mandatory-looking booking interaction as the only way to understand the idea.</p>
+<p><em>Source: A, <code>initial-scheduling-proof</code>.</em></p>
+<h3 id="6-make-navigation-support-evaluation-and-remove-preselection">6. Make navigation support evaluation and remove preselection</h3>
+<p><strong>Strategic reason:</strong> Make the path to setup consistent with the promise of family choice.</p>
+<p><strong>Why this matters:</strong> Preselected rotation and placeholder groups undermine the claim that the family chooses its approach. At the same time, removing every setup link would obstruct an organizer who is already ready.</p>
+<p><strong>Specific change:</strong> Prioritize explanation in navigation, retain a quieter setup route, and remove public URL assumptions. Ask how the group shares time before collecting group details.</p>
+<p><strong>Current:</strong> Navigation includes 'Start free' and 'Sign in'; three sticky/fixed elements are recorded, but their identities and rendered behavior are unknown.</p>
+<p><strong>Subordinate setup action</strong></p>
+<blockquote>
+<p>Set up your house</p>
+</blockquote>
+<p><strong>Setup entry question</strong></p>
+<blockquote>
+<p>How does your group share time?</p>
+</blockquote>
+<p><strong>Navigation:</strong> “See how it works” and “Sign in”; keep “Set up your house” reachable as a quieter navigation route and after explanation. Remove rotation and placeholder-group assumptions from public setup URLs. Do not add a sticky share bar before identifying the existing sticky/fixed elements. Setup last in the main narrative does not mean hiding it from a ready organizer.</p>
+<p><strong>Proposed owner:</strong> Matt · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If navigation changes impair sign-in or setup access, restore those subordinate routes while preserving the public evaluation action and avoiding unverified trial language.</p>
+<p><em>Source: A, <code>evaluation-action-hierarchy</code>.</em></p>
+<h3 id="7-give-decision-controls-explicit-accessible-sizing">7. Give decision controls explicit accessible sizing</h3>
+<p><strong>Strategic reason:</strong> Make the actual decision actions usable on a phone.</p>
+<p><strong>Why this matters:</strong> The strategy depends on reading, opening terms and sharing—not just on the navigation’s existing “Start free” button. Those decision controls need deliberate sizing, spacing and visible focus, especially with enlarged text.</p>
+<p><strong>Specific change:</strong> Set explicit accessible minimums on principal controls, preserve zoom, and measure the rendered result. Do not claim the current buttons fail solely because a CSS minimum is absent.</p>
+<p><strong>Current:</strong> Hero primary CTA lacks a min-height class; secondary link lacks padding/min-height classes; Shared costs explicitly uses min-h-0. Actual boxes are not measured.</p>
+<p><strong>Design target, not a measured current result:</strong> use explicit minimum heights of at least 44 CSS pixels for principal controls, separated touch areas and visible focus states. Verify actual dimensions, enlarged-text wrapping and clipping. Missing <code>min-h</code> does not establish current failure. Preserve zoom, notch/keyboard settings and existing navigation minimum-height intent.</p>
+<blockquote>
+<p>See how it works</p>
+</blockquote>
+<blockquote>
+<p>Read the family summary</p>
+</blockquote>
+<blockquote>
+<p>Share this summary</p>
+</blockquote>
+<blockquote>
+<p>Copy link</p>
+</blockquote>
+<p><strong>Proposed owner:</strong> Matt · <strong>Effort:</strong> S</p>
+<p><strong>If verification fails:</strong> If styles clip content or interfere with zoom/focus, revert the affected style changes and fix the layout while retaining clear labels and the existing accessible viewport configuration.</p>
+<p><em>Source: A, <code>hero-and-summary-controls</code>.</em></p>
+<h3 id="8-answer-personal-effort-and-billing-without-inventing-behavior">8. Answer personal effort and billing without inventing behavior</h3>
+<p><strong>Strategic reason:</strong> Answer the reader’s personal obligation, not only the organizer’s benefit.</p>
+<p><strong>Why this matters:</strong> A relative needs to know whether they must create an account, enter dates or change their routine. Unsupported “easy setup” or booking-on-behalf claims can produce interest based on expectations the product cannot meet.</p>
+<p><strong>Specific change:</strong> Replace speed claims with a concrete setup description. Verify account, viewing, permission and billing behavior before writing the missing participation answers.</p>
+<p><strong>Current:</strong> The live FAQ claims booking on behalf and quick setup; participation behavior and payer mechanics are not verified by the packet.</p>
+<p><strong>Participation heading</strong></p>
+<blockquote>
+<p>If we try it, what would each person need to do?</p>
+</blockquote>
+<p><strong>Evaluation answer when public</strong></p>
+<blockquote>
+<p>No account needed to read this overview, see the example or review pricing.</p>
+</blockquote>
+<p><strong>Setup answer</strong></p>
+<blockquote>
+<p>Start by adding the house, the groups who share it, and the scheduling approach your family uses.</p>
+</blockquote>
+<p><strong>The participation answer is a verification dependency:</strong> establish account requirements, who enters dates, how participants review the schedule and how changes become visible. Remove the “great-aunt” example and unverified reminders/effortless-setup claims. Do not infer anonymous private-calendar access from members being able to view after trial expiry. The no-account evaluation answer is conditional on public route checks. The setup answer describes ingredients, not tested speed or a fixed screen order.</p>
+<p><strong>Preserve these billing questions; verify answers:</strong></p>
+<blockquote>
+<p>Will I be charged when the free trial ends?</p>
+</blockquote>
+<blockquote>
+<p>What if we let the free trial end?</p>
+</blockquote>
+<blockquote>
+<p>Does the paid subscription renew automatically?</p>
+</blockquote>
+<blockquote>
+<p>What if we share more than one house?</p>
+</blockquote>
+<p><strong>Proposed owner:</strong> Co-founder, with Product, Billing and Trust · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> Withdraw any unsupported answer and preserve only verified evaluation guidance. Never broaden 'members can view' into 'everyone can view.'</p>
+<p><em>Source: A, <code>family-effort-and-billing-questions</code>.</em></p>
+<h3 id="9-give-the-existing-founder-title-a-semantic-heading">9. Give the existing founder title a semantic heading</h3>
+<p><strong>Strategic reason:</strong> Use specific lived experience to establish relevance.</p>
+<p><strong>Why this matters:</strong> Dan’s actual story gives a skeptical family a reason to recognize the problem. Removing it loses useful context; inventing stronger biography or treating it as proof of product outcomes would overclaim.</p>
+<p><strong>Specific change:</strong> Promote the existing title to a semantic heading, keep the first-person quote and attribute it. Retain the image only with consent; keep family photos out of previews.</p>
+<p><strong>Current:</strong> The text capture includes 'Five generations. One family house.' but the mobile heading outline omits the founder story.</p>
+<p><strong>Semantic heading</strong></p>
+<blockquote>
+<p>Five generations. One family house.</p>
+</blockquote>
+<p><strong>Quote</strong></p>
+<blockquote>
+<p>I'm the fifth generation to share our family's house on the Oregon coast. We've tried phone calls, paper lists, texts, and shared calendars to figure out who goes when. None quite worked. I built SplitHaus to make that part easier.</p>
+</blockquote>
+<p><strong>Attribution for the quote: Dan, founder.</strong> Preserve the first-person specificity and existing title; inspect the actual element and use a logical H2. Keep the reunion photograph only after consent confirmation, and do not use it in message previews. If consent is not established, retain the text and remove the image.</p>
+<p><strong>Proposed owner:</strong> Matt for semantics; co-founder for asset consent · <strong>Effort:</strong> S</p>
+<p><strong>If verification fails:</strong> If photo consent cannot be established, remove the photograph while retaining the verified text and attribution. Preserve a logical heading hierarchy.</p>
+<p><em>Source: A, <code>founder-provenance-and-heading</code>.</em></p>
+<h3 id="10-use-capability-language-and-keep-shared-costs-secondary">10. Use capability language and keep shared costs secondary</h3>
+<p><strong>Strategic reason:</strong> Keep the buying decision focused and believable.</p>
+<p><strong>Why this matters:</strong> Fairness, occupancy and reliability guarantees ask the reader to trust outcomes that have not been demonstrated. Expense selling introduces a second category decision before the scheduling proposal is understood.</p>
+<p><strong>Specific change:</strong> Use mechanism/capability language, move detailed Match explanation to <code>/how</code>, and keep shared costs in a neutral secondary module. Do not imply the software merely records existing arrangements if it can allocate dates.</p>
+<p><strong>Current:</strong> Current copy includes fairness, reliability, occupancy and universal-fit language; expenses appear in the hero and add-on terms appear in core pricing.</p>
+<p><strong>Value heading</strong></p>
+<blockquote>
+<p>Put your family’s way of sharing on one calendar.</p>
+</blockquote>
+<p><strong>Scheduling explainer</strong></p>
+<blockquote>
+<p>Explore taking turns, booking with rules, or drafting dates. Check how the approach would handle the weeks that matter to your family.</p>
+</blockquote>
+<p><strong>Secondary costs copy</strong></p>
+<blockquote>
+<p>Optional shared costs. Learn about shared costs separately when your group is ready.</p>
+</blockquote>
+<p><strong>Cut:</strong> fairness, occupancy, reliability and reservation-preservation promises; universal compatibility; expense selling in the hero or family summary; detailed Match mechanics in the opening; unverified reminders. Move Match detail to public <code>/how</code>, verify opt-in and actual allocation behavior, and never imply that an allocation product merely records whatever the family already does. The neutral secondary shared-costs module can remain; expansion of its promotion requires category/billing reconciliation.</p>
+<p><strong>Supporting labels</strong></p>
+<blockquote>
+<p>One shared view of the schedule</p>
+</blockquote>
+<blockquote>
+<p>Choose the approach your family uses</p>
+</blockquote>
+<blockquote>
+<p>Make changes visible</p>
+</blockquote>
+<p><strong>Proposed owner:</strong> Co-founder for claims; Matt for placement · <strong>Effort:</strong> S</p>
+<p><strong>If verification fails:</strong> Remove any description that lacks support and retain the recorded scheduling proposition. Do not restore guarantee-shaped claims or unreconciled add-on terms.</p>
+<p><em>Source: A, <code>value-propositions-match-and-costs</code>.</em></p>
+<h3 id="11-put-the-example-before-fuller-cost-and-participation-details">11. Put the example before fuller cost and participation details</h3>
+<p><strong>Strategic reason:</strong> Order the page around the questions needed for a decision.</p>
+<p><strong>Why this matters:</strong> The current interactive task and long FAQ sequence delay fuller cost and effort answers. More copy is not the remedy; the first read needs a short progression from purpose to fit, example and obligation.</p>
+<p><strong>Specific change:</strong> Use the sequence in section 3: compact hero, August prompt, example, cost/participation, family summary, founder proof, detail, optional add-on and setup. Keep direct pricing access early.</p>
+<p><strong>Current:</strong> Detailed pricing follows five objection headings. The founder story is absent from the semantic heading outline. Initial content includes an interactive booking task.</p>
+<p>Use the complete before/after sequence in section 3. The concise offer and pricing link remain early; the fictional example precedes fuller cost and participation detail. Remove stacked headlines and duplicated August prompts. The order is a craft hypothesis—not a measured optimum. If comprehension testing shows cost is hard to find, move the compact cost answer ahead of the example without restoring the long FAQ barrier.</p>
+<p><strong>Proposed owner:</strong> Matt · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If consented comprehension checks show cost is hard to find, move the compact cost answer ahead of the example while retaining the early offer and public pricing link; do not restore the original long FAQ barrier.</p>
+<p><em>Source: A, <code>homepage-dom-sequence</code>.</em></p>
+<h3 id="12-measure-observable-behavior-and-understanding-separately">12. Measure observable behavior and understanding separately</h3>
+<p><strong>Strategic reason:</strong> Measure informed progress rather than activity that looks like conversion.</p>
+<p><strong>Why this matters:</strong> A share API result cannot prove delivery or agreement, and a setup click can reflect curiosity or confusion. The identity-policy disagreement also prevents treating every visit as a comparable persistent person.</p>
+<p><strong>Specific change:</strong> Separate public evaluation from real setup/scheduling events, resolve identity policy explicitly and use consented comprehension testing to assess the quality of the decision.</p>
+<p><strong>Current:</strong> PostHog integration is documented at source level; public-event inventory, delivery, identity configuration and denominators are not currently measured.</p>
+<p>Use the nine public-evaluation events in section 5, with setup/activation downstream rather than mixed into the same event list. The persistent-ID baseline and requested no-persistence exception remain unresolved; this document does not silently choose a policy. Fewer premature setup clicks with better understanding may be progress, not failure.</p>
+<p><strong>Proposed owner:</strong> Matt, with Measurement, Trust and founders · <strong>Effort:</strong> M</p>
+<p><strong>If verification fails:</strong> If payloads violate the reconciled privacy contract or event quality fails verification, disable the affected instrumentation and withdraw derived conclusions while preserving the public user experience. Do not replace missing evidence with inferred family agreement.</p>
+<p><em>Source: A, <code>public-decision-funnel</code>.</em></p>
+</section><section><h2 id="3-page-order-before-and-after">3. Page order: before and after</h2>
+<h3 id="before-captured-content-dom-sequence">Before — captured content/DOM sequence</h3>
+<ol>
+<li>Hero: brand headline, fair-calendar/clear-expenses subhead, setup action, demo link and price cue.</li>
+<li>Interactive sample calendar.</li>
+<li>Founder story, with visible title but absent from the semantic heading outline.</li>
+<li>Value section and three benefit cards.</li>
+<li>Five objection questions, including Match, setup and participation.</li>
+<li>Full pricing section, setup CTA, fine print and shared-costs offer.</li>
+<li>Billing FAQ.</li>
+</ol>
+<p>This is not a measured fold map. [C, M]</p>
+<h3 id="after-the-decision-sequence">After — the decision sequence</h3>
+<ol>
+<li>
+<p>Hero: one functional headline, concise canonical offer, evaluation actions and direct pricing access.</p>
+</li>
+<li>
+<p>August: one short compatibility-check prompt.</p>
+</li>
+<li>
+<p>Example: readable fictional schedule, with optional calendar interaction.</p>
+</li>
+<li>
+<p>Cost and participation: compact verified answers, with detailed billing directly accessible.</p>
+</li>
+<li>
+<p>Family-summary action: Read the family summary.</p>
+</li>
+<li>
+<p>Founder story: Five generations. One family house.</p>
+</li>
+<li>
+<p>Detailed scheduling and billing questions.</p>
+</li>
+<li>
+<p>Optional shared costs.</p>
+</li>
+<li>
+<p>Subordinate setup action: Set up your house.</p>
+</li>
+</ol>
+<p>The fuller cost answer follows the example and precedes lengthy FAQs. Direct pricing access remains in the opening. Match mechanics move to public <code>/how</code>. Keep setup accessible in quieter navigation even though it closes the main page narrative. Actual fold, spacing and scroll distance are not currently measured. Preserve full mobile content parity.</p>
+</section><section><h2 id="4-founder-decisions-and-what-they-block">4. Founder decisions and what they block</h2>
+<p>The three primary decisions below retain Astra’s conflict/result/scope structure. Route ownership and photo consent from Terra complete the list. Proposed owners elsewhere do not replace a recorded assignment.</p>
+<h3 id="decision-1-record-the-authoritative-offer-and-designate-the-billing-claim-reconciliation-owner">Decision 1 — Record the authoritative offer and designate the billing/claim reconciliation owner.</h3>
+<p><strong>Current conflict:</strong> The governing ledger records 180-day wording and restricts external dollar claims; the later verbal decision and captured site describe one year and $119. No formal supersession is supplied.</p>
+<p><strong>Required result:</strong> One recorded offer supported by production evidence and reused consistently across customer-facing surfaces.</p>
+<p><strong>Scope:</strong> Necessary to complete definitive cost copy; not approval to publish.</p>
+<h3 id="decision-2-resolve-the-proposed-analytics-identity-exception">Decision 2 — Resolve the proposed analytics identity exception.</h3>
+<p><strong>Current conflict:</strong> The packet decides persistent IDs; Trust proposes no persisted identifier on /share and forwarded journeys. Measurement notes that routes do not reliably identify organizers or board members.</p>
+<p><strong>Required result:</strong> An explicit reconciled policy and matching reporting limitations, preserving the bans on household tokens, GA, session replay and family tracking graphs.</p>
+<p><strong>Scope:</strong> Necessary to finalize instrumentation; does not prevent the page design from being reviewed.</p>
+<h3 id="decision-3-reconcile-shared-costs-positioning-and-commercial-treatment-if-its-promotion-is-expanded">Decision 3 — Reconcile shared-costs positioning and commercial treatment if its promotion is expanded.</h3>
+<p><strong>Current conflict:</strong> The recorded category excludes finance while the live site sells a shared-costs add-on.</p>
+<p><strong>Required result:</strong> Recorded category and billing treatment before expanded commercial claims.</p>
+<p><strong>Scope:</strong> Conditional; the scheduling journey can retain the settled neutral, secondary module.</p>
+<p>For decision 1, also approve the canonical public terms source and per-house/multi-house wording. Resolve inclusion, card collection, payer mechanics and add-on treatment against production evidence. Do not present the historical 180-day record as current verified terms.</p>
+<p>For decision 2, define consent, persistence/storage, retention, reset and reporting rules explicitly. A route cannot identify an organizer versus a board member, and “forwarded journeys” cannot be reliably isolated by route. The exception is proposed, not adopted; design review can continue without resolving it, but final instrumentation cannot.</p>
+<h3 id="decision-4-assign-ownership-for-public-share-how-and-pricing">Decision 4 — Assign ownership for public <code>/share</code>, <code>/how</code> and <code>/pricing</code></h3>
+<p><strong>Current gap:</strong> the captured explanation and pricing routes redirect to login; the proposed family artifact is not an existing reviewed page.<br />
+<strong>Required result:</strong> named delivery/content-maintenance owners and logged-out route verification.<br />
+<strong>Scope:</strong> required before promising public access; not deployment permission. [T]</p>
+<h3 id="decision-5-confirm-founder-photo-consent">Decision 5 — Confirm founder-photo consent</h3>
+<p><strong>Current gap:</strong> reunion-image consent, including living people pictured, needs verification.<br />
+<strong>Required result:</strong> documented consent or removal of the photo while retaining the first-person text.<br />
+<strong>Scope:</strong> affects the image, not the entire scheduling journey. Do not use this photo in message previews. [A, T]</p>
+</section><section><h2 id="5-measurement-spec-posthog-public-decision-funnel">5. Measurement spec: PostHog public-decision funnel</h2>
+<p><strong>PostHog only. Google Analytics is prohibited.</strong> This version replaces the earlier ten-event mixed evaluation/activation contract with Astra’s nine public-evaluation events. These are proposed event definitions, not evidence they exist in production.</p>
+<h3 id="public-evaluation-events">Public-evaluation events</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Event measurement specification"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Observable definition from Astra</th>
+</tr>
+</thead>
+</table></div>
+<p>| <code>marketing_landing_viewed</code> | Observable browser entry, excluding identified preview and synthetic-test traffic. |</p>
+<p>| <code>explainer_cta_clicked</code> | Activation of the explanation action. |</p>
+<p>| <code>pricing_cta_clicked</code> | Activation of the pricing action. |</p>
+<p>| <code>family_summary_cta_clicked</code> | Navigation toward the family summary. |</p>
+<p>| <code>public_decision_page_viewed</code> | Successful public destination load with sanitized route. |</p>
+<p>| <code>decision_content_exposed</code> | Visibility under a documented rule; not reading or comprehension. |</p>
+<p>| <code>family_share_clicked</code> | Activation of a sharing control. |</p>
+<p>| <code>family_share_result</code> | Only technical native-share or clipboard outcomes exposed by the platform. |</p>
+<p>| <code>setup_cta_clicked</code> | Separate action toward setup. |</p>
+<h3 id="event-semantics-and-verification-criteria">Event semantics and verification criteria</h3>
+<p>Implementation details below operationalize the source definitions; they are not deployed behavior:</p>
+<ul>
+<li>Fire CTA events once per deliberate activation. A navigation click is not a destination view.</li>
+<li>Fire <code>public_decision_page_viewed</code> only after successful public content loads. Allowlist the sanitized route; verify logged-out access.</li>
+<li>Define and document the visibility rule before using <code>decision_content_exposed</code>; do not label exposure as reading or understanding.</li>
+<li>For <code>family_share_result</code>, record only platform-observable outcomes: native API completion/cancellation/error where distinguishable, or clipboard success/failure. Do not call native API completion “sent.” Do not collect chosen recipients, message text or contacts.</li>
+<li>Exclude identifiable preview-bot and synthetic-test traffic from audience results; disclose imperfect detection rather than assuming every load is human.</li>
+<li>Verify emission, ingestion and aggregate receipt with non-identifying synthetic actions. Test double clicks, retries, route transitions and deduplication, success/failure paths, consent denied/granted/withdrawn, identity lifecycle, payload hygiene and counting-window rules. Disable invalid events and withdraw affected conclusions.</li>
+</ul>
+<h3 id="funnel-views-not-one-forced-linear-sequence">Funnel views—not one forced linear sequence</h3>
+<ol>
+<li><strong>Evaluation:</strong> landing → explanation/pricing/summary click → successful public destination → defined content exposure.</li>
+<li><strong>Sharing:</strong> summary exposure → sharing action → technical share/copy result. This does not measure delivery, favorable opinion or agreement.</li>
+<li><strong>Later product use:</strong> setup click → actual setup start → persisted property creation → invitations and real scheduling outcomes. Keep fictional demo activity out. Terra’s <code>property_setup_started</code>, <code>property_created</code>, <code>member_invite_sent</code>, <code>member_invite_accepted</code>, and <code>schedule_created</code> or <code>calendar_action_completed</code> are downstream candidates to validate, not additional mandatory public-stage steps.</li>
+</ol>
+<p>Visitors can enter directly, skip steps or take branches. Do not infer that the sender and reader belong to one family or that a <code>/share</code> visit came from forwarding. Without household identifiers the report cannot count activated families or paid properties by linking these public events.</p>
+<h3 id="identity-a-founder-decision-remains-open">Identity: a founder decision remains open</h3>
+<p><strong>Governing baseline:</strong> PostHog with persistent per-user IDs. <strong>Proposed exception:</strong> no persisted identifier on <code>/share</code> and forwarded journeys. The exception does not supersede the baseline without an explicit decision. Do not implement an inferred organizer-versus-board-member split, or carry identifiers in shared links.</p>
+<p>Once the policy is reconciled, validate consent/storage/retention/reset behavior and any permitted anonymous-to-authenticated transitions. Persisted and non-persisted observations cannot share equivalent longitudinal denominators. Report visits, observable browsers, exposures and technical outcomes separately, with counting windows, consent coverage and deduplication limitations. Do not call them households, votes, favorable forwards, paying properties or economic return.</p>
+<p><strong>Allowlist:</strong> schema/content/offer versions; sanitized route; regional variant; coarse device/entry category; action placement; technical result; opaque deduplication identifiers permitted by the reconciled policy.</p>
+<p><strong>Never collect:</strong> names, contact details, household/property identifiers, message text, booking preferences, invitation tokens, raw sensitive URLs, or inferred family relationships. No GA, session replay, individual analytics inspection, household tokens or family tracking graphs. No identifiable family, owner, resident or parcel research; regional treatment only.</p>
+<h3 id="separate-comprehension-testing">Separate comprehension testing</h3>
+<p>With separate authorization, use consented, non-identifying testing around the 40-second scenario—not a live-page survey. Ask:</p>
+<blockquote>
+<p>What would you text the person who sent you this?</p>
+</blockquote>
+<p>Assess whether the reader understands purpose, cost, personal effort and August expectations—not whether they sound enthusiastic. Desired reader sentence:</p>
+<blockquote>
+<p>This looks worth discussing—let’s check how it would handle our August weeks and what it costs.</p>
+</blockquote>
+<p>No conversion targets, causal lift, willingness-to-pay or economic forecast are supported. A lower setup-click rate can accompany better understanding; technical sharing metrics cannot settle that question.</p>
+</section><section><h2 id="6-verification-backlog">6. Verification backlog</h2>
+<p>The seven groups below preserve Astra’s structured gaps. Nothing here is marked complete. Suggested closure evidence is an editorial implementation aid, not a new measurement result.</p>
+<h3 id="a-rendered-mobile-experience">A. Rendered mobile experience</h3>
+<p><strong>Status: not currently measured.</strong> First-screen contents, pixel positions, tap-target boxes and spacing, sticky-element obstruction, enlarged-text behavior, text wrapping, contrast, focus visibility, screen-reader behavior, scroll distance and calendar thumb usability. Three sticky/fixed elements are recorded, but their identities and rendered effects need verification. The approximately 55px calendar-column figure is arithmetic before padding and gaps, not a measured target.</p>
+<p><strong>Closure evidence:</strong> Render representative phones and enlarged-text settings; measure boxes, spacing and scroll behavior; identify the three sticky/fixed elements; test keyboard, focus, screen reader, contrast and zoom. Check calendar drag-versus-scroll conflict and containment/clipping. Do not equate CSS occurrences with unique failing controls.</p>
+<h3 id="b-performance-and-assets">B. Performance and assets</h3>
+<p><strong>Status: not currently measured.</strong> Image transfer/decode cost, layout shift, Core Web Vitals, load time and interaction latency. Founder photograph responsive-source behavior and consent status need verification.</p>
+<p><strong>Closure evidence:</strong> Measure transfer/decode, layout shift, load/interaction performance and responsive image sources. Record consent or remove the image. A declared sizes attribute does not prove a suitable delivered asset.</p>
+<h3 id="c-scheduling-fit-and-participation">C. Scheduling fit and participation</h3>
+<p><strong>Status: needs verification.</strong> Existing-order and start-point handling, established peak-week compatibility, scheduling-mode selection, Match opt-in behavior, reminders, booking on behalf, account requirements and non-member calendar viewing. Source-level modes do not establish universal compatibility or unchanged reservations.</p>
+<p><strong>Closure evidence:</strong> Demonstrate a named approach against existing-order/start-point and peak-week scenarios. Test mode selection, Match opt-in, account/viewing and on-behalf permissions, notifications and reminders. Keep observed limitations in the public explanation.</p>
+<h3 id="d-offer-and-billing">D. Offer and billing</h3>
+<p><strong>Status: needs verification.</strong> Authoritative trial duration, price, inclusion terms, card collection, payer mechanics, checkout timing, renewal, cancellation, taxes, refunds and trial-expiry behavior. Displayed copy is evidence of what the site says, not production behavior.</p>
+<p><strong>Closure evidence:</strong> Approve a canonical offer backed by production configuration and controlled lifecycle/transaction tests; compare every public offer surface and preserve billing-unit distinctions.</p>
+<h3 id="e-sharing">E. Sharing</h3>
+<p><strong>Status: not currently measured.</strong> Homepage and /share preview tags and rendering, native-share behavior, clipboard fallbacks, actual delivery, favorable accompanying opinions and family agreement. The proposed /share artifact is not an existing reviewed page.</p>
+<p><strong>Closure evidence:</strong> Check logged-out public routes, homepage and summary metadata, real messaging-client previews, native-share and copy failures. Verify print/PDF synchronization if added. Technical checks cannot establish favorable opinions or agreement; those require separate consented research.</p>
+<h3 id="f-analytics">F. Analytics</h3>
+<p><strong>Status: not currently measured.</strong> Event inventory, production emission, ingestion, deduplication, identity configuration, consent behavior, coverage and conversion denominators. No verified economic or conversion conclusions are available.</p>
+<p><strong>Closure evidence:</strong> Use synthetic event actions and aggregate receipt evidence to validate the contract, consent, payloads, deduplication and the reconciled identity policy. Declare denominators, windows and coverage before interpreting results.</p>
+<h3 id="g-reader-understanding">G. Reader understanding</h3>
+<p><strong>Status: not currently measured.</strong> Whether August language reassures, whether equal-length sample rows imply equal allocation, whether she understands personal effort and cost, and whether she can accurately explain her next step. Forty seconds is the design scenario, not observed dwell time.</p>
+<p><strong>Closure evidence:</strong> Run separately authorized consented comprehension tests; assess purpose, next action, cost, effort, August implications and potential equal-allocation misreading. Do not turn the scenario into an observed time-on-page claim.</p>
+<h3 id="additional-retained-gaps-from-terra-and-the-general-review">Additional retained gaps from Terra and the general review</h3>
+<p>These remain open; the seven-group structure does not erase them:</p>
+<ul>
+<li><strong>Service exit/continuity:</strong> schedule export, deletion, read-only access, trial-expiry restrictions and continuity if a family stops using the product. Do not infer preservation from displayed FAQ copy.</li>
+<li><strong>Product integrity:</strong> unresolved concurrency/booking-rule risks and missing DB-backed tests in the baseline; whether agreed changes persist and become visible; setup sequence and completion behavior.</li>
+<li><strong>Participation/payer details:</strong> property-creation notifications, whether someone other than the creator can pay, and invitation behavior.</li>
+<li><strong>Billing:</strong> trial start trigger, first-charge timing/display, dunning, webhooks, shared-costs trial timing and all add-on commercial terms.</li>
+<li><strong>Public trust surfaces:</strong> privacy policy, terms, footer, monitored contact path, analytics notice/consent and any additional founder identity disclosure.</li>
+<li><strong>Outcome evidence:</strong> actual buyer authority, demand, manual alternatives, organizer burden, setup completion, activation, retention, willingness to pay, reliability/fairness outcomes, message resonance and channel economics. These are hypotheses or unmeasured questions, not marketing facts.</li>
+</ul>
+<h3 id="scope-fence">Scope fence</h3>
+<p>Direct-mail eligibility, spend/budget approval, postcards and QR routing remain out of scope. No identifiable household research or personalization is authorized. Parcel-sweep and eligible-record totals are not website tasks. The general review’s regional template is deferred; if revisited, use non-personalized regional language and the canonical offer. No new review, live-site edit or deployment is authorized by this document.</p>
+</section><section><h2 id="7-evidence-disagreement-and-reconciliation-notes">7. Evidence, disagreement and reconciliation notes</h2>
+<h3 id="editorial-approach-and-source-priority">Editorial approach and source priority</h3>
+<p>This edition puts the commercial strategy and the reason for each change first. It is an editorial reorganization of the existing recommendations, not a new review or evidence of improved conversion.</p>
+<p>Astra now controls the rank order and exact copy: functional H1; “See how it works” plus “Read the family summary”; one August compatibility prompt; retained original founder title as the semantic heading; example before fuller cost/participation; explicit accessible controls; nine public events with downstream activation separate. The earlier forced ten-event contract, immediate-share hero action and different founder heading are superseded. Terra corroborates the core approach without overriding these detailed choices.</p>
+<h3 id="known-limits-and-two-corrections-to-the-handoff">Known limits—and two corrections to the handoff</h3>
+<ol>
+<li><strong>Both runs lost adversarial turns.</strong> The handoff records three Astra <code>auth_error</code> failures at alignment (Trust, Skeptic and Evidence Auditor), after initial answers and critique; Terra lost Trust and Evidence Auditor at critique but had their initial and alignment contributions. This provides complementary coverage, not an uninterrupted review in either run. The handoff attributes errors to expiring Claude OAuth; this document did not independently diagnose the runtime. A <code>completed_clean</code> label does not erase the missing turns.</li>
+<li><strong>Named dissent is present in Astra’s rationale.</strong> Contrary to the handoff’s blanket “dissent was not captured” statement, the primary JSON includes a “Role-named dissent, verbatim” passage. There is no need to invent consensus or claim the full transcript history was reconstructed. The disagreements below are sourced to that passage; completeness against all raw turns has not been audited.</li>
+<li><strong>All rendered site geometry is unmeasured.</strong> The source browser attempt failed. The brief’s arithmetic calendar-column width is not a tap-box measurement. This document is based on dated captures, not a fresh live-site recheck.</li>
+<li><strong>Preselection is not Astra-only.</strong> Terra’s <code>new_property.entry</code> and general review’s <code>/new-property-query-string</code> already describe rotation/placeholder assumptions. Astra makes the contradiction with family choice especially clear; credit the existing corroboration rather than assigning false novelty.</li>
+</ol>
+<h3 id="material-disagreement-retained-from-the-primary-rationale">Material disagreement retained from the primary rationale</h3>
+<p><strong>Hero authority versus discussion placement — Skeptical Organizer + Board Member:</strong></p>
+<blockquote>
+<p>I hold that the hero line should state who decides, and the &quot;agree first&quot; question belongs on /share as a discussion prompt for the family, where it is useful.</p>
+</blockquote>
+<p><strong>Detailed pricing order — Landing Page Copy Chief:</strong></p>
+<blockquote>
+<p>Detailed pricing order: Synthesis favors a compact cost section before the example; I favor the example first, with the concise offer and pricing link already in the hero. Neither order has measured support.</p>
+</blockquote>
+<p>Astra adopts the later example-first ordering; it is not an empirically proven winner.</p>
+<p><strong>Identity exception — Trust / Claims / Privacy Reviewer:</strong></p>
+<blockquote>
+<p>/share and any page reached by forward runs PostHog in anonymous, cookieless mode with no persisted identifier</p>
+</blockquote>
+<p><strong>Identity baseline — Measurement Lead:</strong></p>
+<blockquote>
+<p>The packet explicitly decides PostHog plus persistent IDs; it does not restrict that decision to organizers.</p>
+</blockquote>
+<p>This remains founder decision 2—not a policy chosen by the document writer.</p>
+<p><strong>Limits of sharing metrics — Measurement Lead:</strong></p>
+<blockquote>
+<p>A native-share result cannot establish message delivery, the accompanying opinion or family agreement.</p>
+</blockquote>
+<p><strong>Interpreting success — Finance &amp; Unit-Economics Controller:</strong></p>
+<blockquote>
+<p>Fewer setup clicks with better understanding may be progress.</p>
+</blockquote>
+<h3 id="source-key">Source key</h3>
+<p>Paths are relative to this document’s directory. No new review was run.</p>
+<ul>
+<li><strong>A — Primary:</strong> <span title="Source retained privately; not published"><code>icp-mobile-run-astra/10_final_status.json</code></span>, <code>synthesis_json</code>; meeting <code>meet_muc5n08jk3zqn</code>, run <code>run_muc5n0e3d3jpw</code>; Codex <code>gpt-6-astra</code>, Claude <code>claude-fable-5-1</code>. Raw transcripts: <span title="Source retained privately; not published"><code>icp-mobile-run-astra/raw/</code></span>.</li>
+<li><strong>T — Corroboration:</strong> <span title="Source retained privately; not published"><code>icp-mobile-run/10_final_status.json</code></span>; meeting <code>meet_mubyfcybmg4jf</code>, run <code>run_mubyfd39qrbr2</code>; Codex <code>gpt-5.6-terra</code>, same Claude model. Raw transcripts: <span title="Source retained privately; not published"><code>icp-mobile-run/raw/</code></span>.</li>
+<li><strong>G — General site review:</strong> <span title="Source retained privately; not published"><code>improvement-run/10_final_status.json</code></span>; meeting <code>meet_mubxr4ge44nb0</code>, run <code>run_mubxr4s7ucea0</code>.</li>
+<li><strong>C — Dated live text and HTTP evidence:</strong> <span title="Source retained privately; not published"><code>inputs/site-capture-live-2026-09-21.md</code></span>.</li>
+<li><strong>M — Mobile structural evidence:</strong> <span title="Source retained privately; not published"><code>inputs/MOBILE_CAPTURE.md</code></span> and <span title="Source retained privately; not published"><code>inputs/MOBILE_EVIDENCE.md</code></span>.</li>
+<li><strong>B — Baseline and claims authority:</strong> <span title="Source retained privately; not published"><code>inputs/BASELINE_PART1.md</code></span> and <span title="Source retained privately; not published"><code>inputs/BASELINE_PART2.md</code></span>.</li>
+<li><strong>Brief and updated handoff:</strong> <span title="Source retained privately; not published"><code>inputs/ICP_MOBILE_BRIEF.md</code></span> and <span title="Source retained privately; not published"><code>HANDOFF-write-findings-document.md</code></span>. When the handoff conflicts with actual source content, the underlying source governs.</li>
+</ul>
+<h3 id="coverage-and-deduplication">Coverage and deduplication</h3>
+<p>All 12 Astra recommendations appear in rank order. Terra’s 12 map into them: hero/authority → changes 1–2; Match → 10 and verification; public routes → 1; canonical offer → 3; calendar proof → 5; share artifact/prefill → 4; order → 11; claims → 10; setup → 6; measurement → 12 and section 5.</p>
+<p>All 15 general recommendations are incorporated or explicitly deferred: share/print → 4; <code>/how</code> and <code>/pricing</code> → 1; hero/hero actions → 1–2; onboarding → 6; value copy → 10; canonical offer/price → 3; shared costs → 10; regional template → scope fence; demo → 5; founder story → 9; FAQ → 8; measurement → 12. Earlier numeric interim copy does not override the primary no-unverified-offer rule.</p>
+<p><strong>Next:</strong> resolve the offer and identity decisions, assign public-route delivery, settle image consent, and verify proposed claims under separately approved implementation. The neutral secondary shared-costs module need not block scheduling design while expanded promotion remains unresolved.</p>
+</section><p class="footer">Reading edition of SPLITHAUS-SITE-FINDINGS-AND-CHANGES.md. Full report content preserved. Source references are retained for provenance; the underlying research files are not published here. This file uses no external assets or analytics.</p></main></div></body></html>
