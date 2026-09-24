@@ -1,21 +1,13 @@
 # SplitHaus strategy and website review
 
-Two public review artifacts, published with the owner's approval for sharing with Dan:
+Updated September 24, 2026 from the completed positioning and economics council.
 
-- [Strategy document](https://uncle-reboot.github.io/splithaus-site-review/strategy/)
-- [Website prototype](https://uncle-reboot.github.io/splithaus-site-review/website/)
+- [Strategy](https://uncle-reboot.github.io/splithaus-site-review/strategy/)
+- [Clickable mock website](https://uncle-reboot.github.io/splithaus-site-review/website/)
 - [Review hub](https://uncle-reboot.github.io/splithaus-site-review/)
 
-The report explains the strategy, proposed changes and unresolved decisions. The website is an interactive static design prototype, not the live SplitHaus product. No accounts, payments, analytics or product backend are connected. Pricing and unverified behavior are intentionally not invented.
+Curated HTML only. Source packets, private transcripts, product source, credentials and execution logs are not published. Strategy includes the founder's $400 gross annual revenue per house planning assumption, not a subscription-price change or validated margin.
 
-## Publication scope
+Prototype includes sample calendars, pricing, fictional finance records and a local setup-to-proposal flow. Inputs remain in browser memory and disappear on refresh. No accounts, payments, analytics or production integration. Proposed features are marked. Noindex is not access control: these pages and the repository are public.
 
-Only curated HTML artifacts and this repository's configuration are published. No council transcripts, source packets, credentials, execution logs, browser screenshots or local verification scripts are included. Report source labels remain as provenance references but are not links to unpublished files. Prototype labels say “design preview” rather than implying private access.
-
-GitHub Pages serves the root of `main`. All assets are inline. Website navigation uses hash routes so it works beneath the GitHub Pages project path. Sharing uses the current hosted preview URL.
-
-## Verification status
-
-Ad-hoc browser and publication checks only; no project test suite or CI-green claim. This repository is not production approval. Native-share delivery, real mobile Safari and product/billing behavior are not verified.
-
-The public pages request no indexing, but neither noindex nor an unadvertised link provides access control.
+GitHub Pages serves main at /. All assets are inline, with hash-route navigation. Local Chromium checks passed at 390px and 1440px across four setup/proposal methods with no external requests, page JavaScript errors or checked horizontal overflow. These are prototype checks, not certification of the live product.
