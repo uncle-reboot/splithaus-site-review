@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Local interactive prototype of a SplitHaus homepage, pricing and setup-to-proposal flow. Design preview only.">
 <meta name="theme-color" content="#182f35">
-<title>SplitHaus — Plan who goes when. (local prototype)</title>
+<title>SplitHaus — One shared home. A clearer way to manage it. (local prototype)</title>
 <style>
 :root{color-scheme:light;--ink:#182f35;--muted:#53656a;--line:#dce3df;--accent:#226658;--paper:#fffefb;--wash:#f2f5f1;--sage:#edf4ee;--gold:#a06d36;--radius:12px}
 *{box-sizing:border-box}
@@ -239,11 +239,11 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow">For shared vacation homes</div>
-      <h1>Plan who goes when.</h1>
-      <p class="lead">Choose how your group shares time: take turns, draft dates, use Match or book as you go. When plans change, your group can make unused dates available again.</p>
+      <h1>One shared home. A clearer way to manage it.</h1>
+      <p class="lead">Coordinate who goes when, keep shared costs clear, and put the house details where everyone can find them.</p>
       <div class="actions">
         <a class="button" href="#/setup">Try your house setup <span aria-hidden="true">→</span></a>
-        <a class="button secondary" href="#calendar-demo">Explore the sample calendar</a>
+        <a class="button secondary" href="#how-it-works">Explore how it works</a>
       </div>
       <p class="price-line">Free for 1 year. No card to start. Then $119 per house, per year. Everyone included.</p>
       <p class="opening-note">This is a local, offline prototype — exploring it creates nothing and saves nothing.</p>
@@ -258,6 +258,7 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
   </div>
 </section>
 
+<section class="section" id="how-it-works"><div class="wrap"><div class="section-head"><div class="eyebrow">Time. Costs. House details.</div><h2>The practical side of sharing a home.</h2><p>One place to coordinate the things your group needs to keep clear.</p></div><div class="actions"><a class="button secondary" href="#calendar-demo">Time — see scheduling</a><a class="button secondary" href="#finance-demo">Costs — explore the optional add-on</a><a class="button secondary" href="#house-details">House details — see the guide</a></div></div></section>
 <section class="section paper" id="calendar-demo">
   <div class="wrap">
     <div class="section-head">
@@ -337,6 +338,7 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
   </div>
 </section>
 
+<section class="section paper" id="house-details"><div class="wrap narrow"><div class="eyebrow">House details</div><h2>Less searching through old messages.</h2><p>Keep arrival instructions, house rules, checkout notes and maintenance records together in the house guide.</p><span class="fictional-tag">Illustrative house-guide entries</span><details><summary>Arrival &amp; house rules</summary><p>Keep the entry clear and return shared equipment to its place. Add the instructions your group actually uses.</p></details><details><summary>Before you leave</summary><p>Close windows, check doors and leave shared spaces ready for the next group. These are fictional example notes, not instructions for a real property.</p></details><details><summary>Maintenance notes</summary><p>Record the issue, date and what was done so the next person has the context. This is a record, not a contractor-dispatch service.</p></details></div></section>
 <section class="section paper">
   <div class="wrap" style="display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center">
     <div>
@@ -369,7 +371,7 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
     <div class="eyebrow">Something you can forward</div>
     <h2>What is SplitHaus?</h2>
     <div class="overview-box">
-      <p>SplitHaus helps people who share a vacation home divide time, handle changes and make unused dates available. Optional shared-cost tools help plan expenses and track outside payments. Explore the sample together, or let one person try the house setup first.</p>
+      <p>SplitHaus helps your group coordinate a shared vacation home: who goes when, shared costs and practical house details. Shared-cost tools are an optional add-on; payments are made outside SplitHaus. Explore how it works together, or let one person try the house setup first.</p>
       <button class="button secondary" id="copy-overview">Copy this overview text</button>
       <p class="status-line" id="overview-status" role="status"></p>
     </div>
@@ -536,7 +538,7 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
   <div class="wrap">
     <div>
       <a class="logo" href="#/">SplitHaus</a>
-      <p>Plan who goes when.</p>
+      <p>One shared home. A clearer way to manage it.</p>
     </div>
     <div>
       <div class="footer-links">
@@ -556,7 +558,7 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
 
 /* ---------- navigation / preview bar ---------- */
 var pages=['home','pricing','setup','proposal'];
-var titles={home:'Plan who goes when.',pricing:'Pricing & billing — local prototype',setup:'Set up your house — local prototype',proposal:'Your house proposal preview — local prototype'};
+var titles={home:'One shared home. A clearer way to manage it.',pricing:'Pricing & billing — local prototype',setup:'Set up your house — local prototype',proposal:'Your house proposal preview — local prototype'};
 var nav=document.getElementById('navigation'),menu=document.getElementById('menu-toggle');
 
 function route(){
@@ -596,7 +598,7 @@ document.getElementById('footer-notes').addEventListener('click',function(){
 });
 
 /* ---------- overview copy button ---------- */
-var overviewText="SplitHaus helps people who share a vacation home divide time, handle changes and make unused dates available. Optional shared-cost tools help plan expenses and track outside payments. Explore the sample together, or let one person try the house setup first.";
+var overviewText="SplitHaus helps your group coordinate a shared vacation home: who goes when, shared costs and practical house details. Shared-cost tools are an optional add-on; payments are made outside SplitHaus. Explore how it works together, or let one person try the house setup first.";
 document.getElementById('copy-overview').addEventListener('click',async function(){
   var status=document.getElementById('overview-status');
   if(!navigator.clipboard||!window.isSecureContext){
