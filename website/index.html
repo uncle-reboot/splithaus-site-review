@@ -108,8 +108,63 @@ main{min-height:60vh}
 .calendar-list .plan-row.highlight{background:var(--panel);margin:0 -20px;padding:12px 20px;border-radius:6px}
 .slot-actions{display:flex;align-items:center;gap:10px}
 .slot-actions button{min-height:44px;padding:6px 12px;font-size:13px}
-.method-copy{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 18px;font-size:14.5px;margin-top:16px}
+.method-copy{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 18px;font-size:14.5px;margin-bottom:16px}
 .method-copy p{margin-bottom:0}
+#method-stage{min-height:0}
+
+/* Rotation: reorderable order list + weekly strip */
+.order-list{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);overflow:hidden}
+.order-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-top:1px solid var(--line)}
+.order-row:first-child{border-top:0}
+.order-row.highlight{background:var(--panel)}
+.order-pos{font-weight:700;color:var(--muted);min-width:20px}
+.order-name{display:flex;align-items:center;gap:8px;flex:1;font-weight:650}
+.order-btns{display:flex;gap:4px}
+.order-btns button{min-height:36px;min-width:36px;padding:0;font-size:13px}
+.rotation-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.rotation-block{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px;box-shadow:0 1px 2px rgba(16,36,43,.04);transition:background-color .15s ease,border-color .15s ease}
+.rotation-block.highlight{background:var(--panel);border-color:var(--accent)}
+.rb-date{font-weight:650;font-size:14px;margin-bottom:8px}
+.rb-group{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink)}
+
+/* Draft: turn badge + clickable board */
+.draft-status{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.draft-turn-badge{display:inline-flex;align-items:center;gap:8px;font-weight:650;font-size:14.5px;padding:8px 14px;border-radius:99px;background:var(--panel);border:1px solid var(--line)}
+.draft-actions{display:flex;gap:8px;flex-wrap:wrap}
+.draft-actions button{min-height:40px;font-size:13px;padding:8px 12px}
+.draft-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.draft-block{border:1px dashed var(--line);border-radius:10px;background:var(--paper);padding:14px;text-align:left;min-height:76px;transition:background-color .15s ease,border-color .15s ease,transform .15s ease}
+.draft-block.on-turn-hint{border-color:var(--accent);cursor:pointer}
+.draft-block.on-turn-hint:hover{background:var(--panel);transform:translateY(-1px)}
+.draft-block.claimed{border-style:solid;background:var(--panel)}
+.draft-block.claimed.highlight{border-color:var(--accent)}
+.draft-block .rb-group{margin-top:8px}
+.draft-block .example-tag{display:block;margin-top:6px}
+
+/* Match: clickable rating grid + outcome */
+.match-grid{border-collapse:collapse;width:100%;min-width:520px}
+.match-grid th,.match-grid td{padding:6px;border:1px solid var(--line);text-align:center;font-size:13px}
+.match-grid thead th{background:var(--panel);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.match-grid thead th.highlight{background:var(--accent);color:#fff}
+.match-cellbtn{min-height:40px;width:100%;padding:6px 4px;font-size:12px;font-weight:650;border-radius:6px;border:1px solid var(--line);background:var(--paper)}
+.match-tier-1{background:color-mix(in oklab,var(--accent) 55%,var(--paper));color:#fff;border-color:var(--accent)}
+.match-tier-2{background:color-mix(in oklab,var(--accent) 28%,var(--paper));border-color:var(--accent)}
+.match-tier-3{background:var(--paper)}
+.match-tier-4{background:color-mix(in oklab,var(--ink) 10%,var(--paper))}
+.match-tier-5{background:color-mix(in oklab,var(--ink) 18%,var(--paper));color:var(--ink)}
+.match-outcome{margin-top:18px}
+.match-outcome h3{margin-bottom:6px}
+.match-outcome .example-tag{display:inline-block;margin-bottom:10px}
+
+/* Open: reserve/release tile grid */
+.open-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.open-tile{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px;display:flex;flex-direction:column;gap:10px;transition:background-color .15s ease,border-color .15s ease}
+.open-tile.booked{background:var(--panel)}
+.open-tile.highlight{border-color:var(--accent)}
+.ot-date{font-weight:650;font-size:14px}
+.ot-status{display:flex;align-items:center;gap:7px;font-size:13px}
+.open-tile button{align-self:flex-start}
+@media(max-width:520px){.match-grid{min-width:0}.match-grid th,.match-grid td{font-size:11.5px}}
 
 .august{padding:26px 0;background:var(--panel);border-bottom:1px solid var(--line)}
 .august .wrap{display:flex;gap:22px;align-items:flex-start}
@@ -287,8 +342,8 @@ nav .quiet-setup{margin-top:6px;text-align:center;justify-content:center}
     <p class="small muted">Highlight a group to trace its dates through the list below.</p>
     <div class="chips" id="group-chips" role="group" aria-label="Highlight a group"></div>
     <div id="panel-method" role="tabpanel" aria-labelledby="tab-rotation">
-      <div class="calendar-list" id="calendar-list"></div>
       <div class="method-copy" id="method-copy"></div>
+      <div id="method-stage"></div>
     </div>
   </div>
 </section>
@@ -630,21 +685,27 @@ var demoGroups=[
   {name:'Group B',cls:'dot b'},
   {name:'Group C',cls:'dot c'}
 ];
-var openSlots=[
-  {date:'August 1–7',status:'booked',group:'Group A'},
-  {date:'August 8–14',status:'open',group:null},
-  {date:'August 15–21',status:'booked',group:'Group B'},
-  {date:'August 22–28',status:'open',group:null}
-];
+var demoBlocks=['August 1–7','August 8–14','August 15–21','August 22–28'];
+var TIERS=[[1,'Must have'],[2,'Would love'],[3,'Fine with it'],[4,'Rather not'],[5,"Can't go"]];
 var highlightGroup=null;
 var currentMethod='rotation';
 
 var methodCopy={
-  rotation:'Rotation label: proposed, illustrative example. This is not the output of a real allocator — it simply repeats your groups in order across sample weeks.',
-  draft:'Draft example: groups pick dates in turns, in the order shown. The calendar below is a fictional example outcome, not an actual allocation.',
-  match:'Match example: each group rates available dates and gets a share of time based on configured shares. The calendar below uses sample ratings and is not an allocation.',
-  open:'Open booking: anyone with permission can reserve an available date directly. Try reserving or releasing a sample date below — this only changes state in this tab.'
+  rotation:'Take turns: groups use the house in a set order. Reorder the groups below and watch the sample weeks update — this is not the output of a real allocator.',
+  draft:'Draft: groups take turns choosing an available week, in the order shown. Click an open week for whoever is on the clock — this is an illustrative sample, not a live draft.',
+  match:'Match: each group rates the sample weeks, then SplitHaus considers every rating together to build a schedule. Click a rating to change it and see the illustrative outcome below — this is a simplified example, not the real matching algorithm.',
+  open:'Open (book as you go): anyone with permission can reserve an available week directly, first come first served. Try reserving or releasing a sample week below — this only changes state in this tab.'
 };
+
+/* ---- shared state for each method's sample interaction ---- */
+var rotationOrder=[0,1,2];
+var draftOrder=[0,1,2];
+var draftPicks=new Array(demoBlocks.length).fill(null);
+var draftHistory=[];
+var matchRatings={};
+var openSlots=demoBlocks.map(function(b,i){
+  return {date:b,status:(i===0||i===2)?'booked':'open',group:(i===0)?'Group A':(i===2?'Group B':null)};
+});
 
 function renderChips(){
   var wrap=document.getElementById('group-chips');
@@ -663,7 +724,7 @@ function renderChips(){
     b.addEventListener('click',function(){
       highlightGroup=(highlightGroup===g.name)?null:g.name;
       renderChips();
-      renderCalendar();
+      renderMethodPanel();
     });
     wrap.appendChild(b);
   });
@@ -691,80 +752,356 @@ function makeRow(dateText,groupName,groupCls,extraNode){
   return row;
 }
 
-function renderCalendar(){
-  var list=document.getElementById('calendar-list');
-  list.replaceChildren();
-  if(currentMethod==='rotation'){
-    var weeks=['August 1–7','August 8–14','August 15–21'];
-    weeks.forEach(function(w,i){
-      var g=demoGroups[i%demoGroups.length];
-      list.appendChild(makeRow(w,g.name,g.cls));
+/* ---------------- ROTATION: reorder groups, weekly strip updates ---------------- */
+function renderRotationPanel(stage){
+  var wrap=document.createElement('div');
+
+  var orderHead=document.createElement('p');
+  orderHead.className='small muted';
+  orderHead.style.marginBottom='8px';
+  orderHead.textContent='Set the turn order:';
+  wrap.appendChild(orderHead);
+
+  var orderList=document.createElement('div');
+  orderList.className='order-list';
+  rotationOrder.forEach(function(groupIdx,pos){
+    var g=demoGroups[groupIdx];
+    var row=document.createElement('div');
+    row.className='order-row'+(highlightGroup===g.name?' highlight':'');
+    var posSpan=document.createElement('span');posSpan.className='order-pos';posSpan.textContent=(pos+1)+'.';
+    var nameSpan=document.createElement('span');nameSpan.className='order-name';
+    var dot=document.createElement('i');dot.className=g.cls;
+    var label=document.createElement('span');label.textContent=g.name;
+    nameSpan.appendChild(dot);nameSpan.appendChild(label);
+    var btns=document.createElement('span');btns.className='order-btns';
+    var up=document.createElement('button');up.type='button';up.textContent='↑';
+    up.setAttribute('aria-label','Move '+g.name+' earlier in the rotation');
+    up.disabled=pos===0;
+    up.addEventListener('click',function(){
+      var tmp=rotationOrder[pos-1];rotationOrder[pos-1]=rotationOrder[pos];rotationOrder[pos]=tmp;
+      renderMethodPanel();
     });
-  }else if(currentMethod==='draft'){
-    demoGroups.forEach(function(g,i){
-      var row=makeRow('Round '+(i+1)+' pick',g.name,g.cls);
-      var ex=document.createElement('span');
-      ex.className='example-tag';
-      ex.textContent='Example turn';
-      row.appendChild(ex);
-      list.appendChild(row);
+    var down=document.createElement('button');down.type='button';down.textContent='↓';
+    down.setAttribute('aria-label','Move '+g.name+' later in the rotation');
+    down.disabled=pos===rotationOrder.length-1;
+    down.addEventListener('click',function(){
+      var tmp=rotationOrder[pos+1];rotationOrder[pos+1]=rotationOrder[pos];rotationOrder[pos]=tmp;
+      renderMethodPanel();
     });
-  }else if(currentMethod==='match'){
-    var shares=[40,35,25];
-    demoGroups.forEach(function(g,i){
-      var row=makeRow('Share: '+shares[i]+'%',g.name,g.cls);
-      var ex=document.createElement('span');
-      ex.className='example-tag';
-      ex.textContent='Example rating';
-      row.appendChild(ex);
-      list.appendChild(row);
-    });
-  }else if(currentMethod==='open'){
-    openSlots.forEach(function(slot,i){
-      var btn=document.createElement('button');
-      btn.className='button secondary';
-      btn.type='button';
-      btn.style.minHeight='36px';
-      btn.style.padding='6px 12px';
-      btn.style.fontSize='13px';
-      if(slot.status==='booked'){
-        btn.textContent='Release (sample)';
-        btn.addEventListener('click',function(){slot.status='open';slot.group=null;renderCalendar();});
-      }else{
-        btn.textContent='Reserve (sample)';
-        btn.addEventListener('click',function(){slot.status='booked';slot.group='You (sample)';renderCalendar();});
-      }
-      btn.style.minHeight='44px';
-      var wrapper=document.createElement('span');
-      wrapper.className='slot-actions';
-      wrapper.appendChild(btn);
-      var g=slot.status==='booked'?{name:slot.group,cls:'dot d'}:null;
-      var row=makeRow(slot.date,g?g.name:null,g?g.cls:null,wrapper);
-      if(!g){
-        var openTag=document.createElement('span');
-        openTag.className='group-tag';
-        openTag.textContent='Open';
-        row.insertBefore(openTag,wrapper);
-      }
-      list.appendChild(row);
-    });
-  }
-  document.getElementById('method-copy').innerHTML='';
-  var p=document.createElement('p');
-  p.textContent=methodCopy[currentMethod];
-  document.getElementById('method-copy').appendChild(p);
+    btns.appendChild(up);btns.appendChild(down);
+    row.appendChild(posSpan);row.appendChild(nameSpan);row.appendChild(btns);
+    orderList.appendChild(row);
+  });
+  wrap.appendChild(orderList);
+
+  var stripHead=document.createElement('p');
+  stripHead.className='small muted';
+  stripHead.style.margin='14px 0 8px';
+  stripHead.textContent='Sample weeks, following that order:';
+  wrap.appendChild(stripHead);
+
+  var strip=document.createElement('div');
+  strip.className='rotation-strip';
+  demoBlocks.forEach(function(dateText,i){
+    var g=demoGroups[rotationOrder[i%rotationOrder.length]];
+    var block=document.createElement('div');
+    block.className='rotation-block'+(highlightGroup===g.name?' highlight':'');
+    var dateEl=document.createElement('div');dateEl.className='rb-date';dateEl.textContent=dateText;
+    var groupEl=document.createElement('div');groupEl.className='rb-group';
+    var dot=document.createElement('i');dot.className=g.cls;
+    var label=document.createElement('span');label.textContent=g.name;
+    groupEl.appendChild(dot);groupEl.appendChild(label);
+    block.appendChild(dateEl);block.appendChild(groupEl);
+    strip.appendChild(block);
+  });
+  wrap.appendChild(strip);
+  stage.appendChild(wrap);
 }
 
-document.querySelectorAll('#calendar-demo .tab').forEach(function(tab){
-  tab.addEventListener('click',function(){
-    document.querySelectorAll('#calendar-demo .tab').forEach(function(t){t.setAttribute('aria-selected','false')});
-    tab.setAttribute('aria-selected','true');
-    currentMethod=tab.dataset.method;
-    renderCalendar();
+/* ---------------- DRAFT: click to choose a week, turn advances ---------------- */
+function renderDraftPanel(stage){
+  var wrap=document.createElement('div');
+  var pickerPos=draftHistory.length%draftOrder.length;
+  var done=draftHistory.length>=demoBlocks.length;
+  var pickerGroup=demoGroups[draftOrder[pickerPos]];
+
+  var status=document.createElement('div');
+  status.className='draft-status';
+  var badge=document.createElement('span');
+  badge.className='draft-turn-badge';
+  badge.setAttribute('role','status');
+  if(done){
+    badge.textContent='All sample weeks picked.';
+  }else{
+    var dot=document.createElement('i');dot.className=pickerGroup.cls;
+    var label=document.createElement('span');
+    label.textContent=(highlightGroup===pickerGroup.name?'★ ':'')+'On the clock: '+pickerGroup.name;
+    badge.appendChild(dot);badge.appendChild(label);
+  }
+  status.appendChild(badge);
+
+  var actions=document.createElement('span');
+  actions.className='draft-actions';
+  var undoBtn=document.createElement('button');
+  undoBtn.type='button';undoBtn.className='button ghost';undoBtn.textContent='Undo last pick';
+  undoBtn.disabled=draftHistory.length===0;
+  undoBtn.addEventListener('click',function(){
+    var last=draftHistory.pop();
+    if(last!==undefined)draftPicks[last]=null;
+    renderMethodPanel();
+  });
+  var resetBtn=document.createElement('button');
+  resetBtn.type='button';resetBtn.className='button ghost';resetBtn.textContent='Reset draft';
+  resetBtn.addEventListener('click',function(){
+    draftPicks=new Array(demoBlocks.length).fill(null);
+    draftHistory=[];
+    renderMethodPanel();
+  });
+  actions.appendChild(undoBtn);actions.appendChild(resetBtn);
+  status.appendChild(actions);
+  wrap.appendChild(status);
+
+  var board=document.createElement('div');
+  board.className='draft-board';
+  demoBlocks.forEach(function(dateText,i){
+    var picked=draftPicks[i];
+    if(picked!==null){
+      var g=demoGroups[picked];
+      var tile=document.createElement('div');
+      tile.className='draft-block claimed'+(highlightGroup===g.name?' highlight':'');
+      var dateEl=document.createElement('div');dateEl.className='rb-date';dateEl.textContent=dateText;
+      var groupEl=document.createElement('div');groupEl.className='rb-group';
+      var dot=document.createElement('i');dot.className=g.cls;
+      var label=document.createElement('span');label.textContent=g.name;
+      groupEl.appendChild(dot);groupEl.appendChild(label);
+      var tag=document.createElement('span');tag.className='example-tag';tag.textContent='Picked';
+      tile.appendChild(dateEl);tile.appendChild(groupEl);tile.appendChild(tag);
+      board.appendChild(tile);
+    }else{
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='draft-block'+(done?'':' on-turn-hint');
+      btn.disabled=done;
+      var dateEl2=document.createElement('div');dateEl2.className='rb-date';dateEl2.textContent=dateText;
+      var cta=document.createElement('div');cta.className='rb-group';
+      cta.textContent=done?'Not picked':'Choose this week';
+      btn.appendChild(dateEl2);btn.appendChild(cta);
+      btn.setAttribute('aria-label','Choose '+dateText+' for '+(done?'no one':pickerGroup.name));
+      (function(idx){
+        btn.addEventListener('click',function(){
+          if(done)return;
+          draftPicks[idx]=draftOrder[pickerPos];
+          draftHistory.push(idx);
+          renderMethodPanel();
+        });
+      })(i);
+      board.appendChild(btn);
+    }
+  });
+  wrap.appendChild(board);
+  stage.appendChild(wrap);
+}
+
+/* ---------------- MATCH: clickable ratings + illustrative outcome ---------------- */
+function matchDefaultTier(groupIdx,weekIdx){
+  return ((groupIdx*2+weekIdx)%5)+1;
+}
+function matchRatingFor(groupIdx,weekIdx){
+  var key=groupIdx+':'+weekIdx;
+  return (key in matchRatings)?matchRatings[key]:matchDefaultTier(groupIdx,weekIdx);
+}
+function matchTierLabel(value){
+  var found=TIERS.filter(function(t){return t[0]===value});
+  return found.length?found[0][1]:'';
+}
+function computeMatchOutcome(){
+  var quota=Math.ceil(demoBlocks.length/demoGroups.length);
+  var counts=demoGroups.map(function(){return 0;});
+  var assignment=new Array(demoBlocks.length).fill(null);
+  demoBlocks.forEach(function(b,w){
+    var candidates=demoGroups.map(function(g,gi){return {gi:gi,tier:matchRatingFor(gi,w)};});
+    candidates.sort(function(a,b2){
+      if(a.tier!==b2.tier)return a.tier-b2.tier;
+      return counts[a.gi]-counts[b2.gi];
+    });
+    var pick=null;
+    for(var c=0;c<candidates.length;c++){
+      if(candidates[c].tier<5 && counts[candidates[c].gi]<quota){pick=candidates[c];break;}
+    }
+    if(pick){assignment[w]=pick.gi;counts[pick.gi]++;}
+  });
+  return assignment;
+}
+function renderMatchPanel(stage){
+  var wrap=document.createElement('div');
+  var intro=document.createElement('p');
+  intro.className='small muted';
+  intro.style.marginBottom='8px';
+  intro.textContent='Click a rating to cycle through it for that group and week:';
+  wrap.appendChild(intro);
+
+  var tableWrap=document.createElement('div');
+  tableWrap.style.overflowX='auto';
+  var table=document.createElement('table');
+  table.className='match-grid';
+  table.setAttribute('role','table');
+  table.setAttribute('aria-label','Sample weeks and group ratings');
+  var thead=document.createElement('thead');
+  var headRow=document.createElement('tr');
+  var cornerTh=document.createElement('th');cornerTh.scope='col';cornerTh.textContent='Week';
+  headRow.appendChild(cornerTh);
+  demoGroups.forEach(function(g){
+    var th=document.createElement('th');
+    th.scope='col';
+    th.className=highlightGroup===g.name?'highlight':'';
+    th.textContent=g.name;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  var tbody=document.createElement('tbody');
+  demoBlocks.forEach(function(dateText,w){
+    var tr=document.createElement('tr');
+    var th=document.createElement('th');th.scope='row';th.style.fontWeight='650';th.style.fontSize='14px';th.textContent=dateText;
+    tr.appendChild(th);
+    demoGroups.forEach(function(g,gi){
+      var td=document.createElement('td');
+      var tier=matchRatingFor(gi,w);
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='match-cellbtn match-tier-'+tier;
+      btn.textContent=matchTierLabel(tier);
+      btn.setAttribute('aria-label',g.name+', '+dateText+': '+matchTierLabel(tier)+'. Activate to change.');
+      (function(groupIdx,weekIdx){
+        btn.addEventListener('click',function(){
+          var next=matchRatingFor(groupIdx,weekIdx)+1;
+          if(next>5)next=1;
+          matchRatings[groupIdx+':'+weekIdx]=next;
+          renderMethodPanel();
+        });
+      })(gi,w);
+      td.appendChild(btn);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  tableWrap.appendChild(table);
+  wrap.appendChild(tableWrap);
+
+  var resetRatings=document.createElement('button');
+  resetRatings.type='button';resetRatings.className='button ghost';resetRatings.textContent='Reset ratings';
+  resetRatings.style.marginBottom='6px';
+  resetRatings.addEventListener('click',function(){matchRatings={};renderMethodPanel();});
+  wrap.appendChild(resetRatings);
+
+  var outcomeWrap=document.createElement('div');
+  outcomeWrap.className='match-outcome';
+  var outcomeHead=document.createElement('h3');
+  outcomeHead.style.fontSize='16px';
+  outcomeHead.textContent='Illustrative outcome';
+  var outcomeTag=document.createElement('span');
+  outcomeTag.className='example-tag';
+  outcomeTag.textContent='Simplified example, not the real Match algorithm';
+  var outcomeList=document.createElement('div');
+  outcomeList.className='calendar-list';
+  outcomeList.style.marginTop='10px';
+  var assignment=computeMatchOutcome();
+  demoBlocks.forEach(function(dateText,w){
+    var gi=assignment[w];
+    if(gi===null){
+      outcomeList.appendChild(makeRow(dateText,null,null));
+    }else{
+      var g=demoGroups[gi];
+      outcomeList.appendChild(makeRow(dateText,g.name,g.cls));
+    }
+  });
+  outcomeWrap.appendChild(outcomeHead);
+  outcomeWrap.appendChild(outcomeTag);
+  outcomeWrap.appendChild(outcomeList);
+  wrap.appendChild(outcomeWrap);
+
+  stage.appendChild(wrap);
+}
+
+/* ---------------- OPEN: reserve / release tiles ---------------- */
+function renderOpenPanel(stage){
+  var wrap=document.createElement('div');
+  var tiles=document.createElement('div');
+  tiles.className='open-tiles';
+  openSlots.forEach(function(slot,i){
+    var tile=document.createElement('div');
+    tile.className='open-tile'+(slot.status==='booked'?' booked':'')+(slot.group&&highlightGroup===slot.group?' highlight':'');
+    var dateEl=document.createElement('div');dateEl.className='ot-date';dateEl.textContent=slot.date;
+    var statusEl=document.createElement('div');statusEl.className='ot-status';
+    if(slot.status==='booked'){
+      var g=demoGroups.filter(function(dg){return dg.name===slot.group})[0];
+      var dot=document.createElement('i');dot.className=g?g.cls:'dot d';
+      var label=document.createElement('span');label.textContent=slot.group;
+      statusEl.appendChild(dot);statusEl.appendChild(label);
+    }else{
+      var openTag=document.createElement('span');openTag.className='group-tag';openTag.textContent='Open';
+      statusEl.appendChild(openTag);
+    }
+    tile.appendChild(dateEl);tile.appendChild(statusEl);
+    var btn=document.createElement('button');
+    btn.type='button';btn.className='button secondary';
+    if(slot.status==='booked'){
+      btn.textContent='Release (sample)';
+      btn.addEventListener('click',function(){slot.status='open';slot.group=null;renderMethodPanel();});
+    }else{
+      btn.textContent='Reserve (sample)';
+      btn.addEventListener('click',function(){slot.status='booked';slot.group='You (sample)';renderMethodPanel();});
+    }
+    tile.appendChild(btn);
+    tiles.appendChild(tile);
+  });
+  wrap.appendChild(tiles);
+  stage.appendChild(wrap);
+}
+
+function renderMethodPanel(){
+  var stage=document.getElementById('method-stage');
+  stage.replaceChildren();
+  var copyWrap=document.getElementById('method-copy');
+  copyWrap.replaceChildren();
+  var p=document.createElement('p');
+  p.textContent=methodCopy[currentMethod];
+  copyWrap.appendChild(p);
+  if(currentMethod==='rotation')renderRotationPanel(stage);
+  else if(currentMethod==='draft')renderDraftPanel(stage);
+  else if(currentMethod==='match')renderMatchPanel(stage);
+  else if(currentMethod==='open')renderOpenPanel(stage);
+}
+
+var methodTabs=Array.prototype.slice.call(document.querySelectorAll('#calendar-demo .tab'));
+function selectMethodTab(tab,moveFocus){
+  methodTabs.forEach(function(t){t.setAttribute('aria-selected','false');t.tabIndex=-1;});
+  tab.setAttribute('aria-selected','true');
+  tab.tabIndex=0;
+  currentMethod=tab.dataset.method;
+  document.getElementById('panel-method').setAttribute('aria-labelledby',tab.id);
+  renderMethodPanel();
+  if(moveFocus)tab.focus();
+}
+methodTabs.forEach(function(tab,i){
+  tab.tabIndex=(tab.getAttribute('aria-selected')==='true')?0:-1;
+  tab.addEventListener('click',function(){selectMethodTab(tab,false);});
+  tab.addEventListener('keydown',function(e){
+    var next=null;
+    if(e.key==='ArrowRight'||e.key==='Right')next=(i+1)%methodTabs.length;
+    else if(e.key==='ArrowLeft'||e.key==='Left')next=(i-1+methodTabs.length)%methodTabs.length;
+    else if(e.key==='Home')next=0;
+    else if(e.key==='End')next=methodTabs.length-1;
+    if(next!==null){
+      e.preventDefault();
+      selectMethodTab(methodTabs[next],true);
+    }
   });
 });
 renderChips();
-renderCalendar();
+renderMethodPanel();
 
 /* ============ FINANCE DEMO ============ */
 var financeState={
